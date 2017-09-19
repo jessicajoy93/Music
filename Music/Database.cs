@@ -154,5 +154,38 @@ namespace Music
             }
         }
 
+        public string DeleteOwnerCDTracks(string ID, string Table)
+        {
+            // only run if there is something in the textbox
+            if (!object.ReferenceEquals(ID, string.Empty))
+            {
+                var myCommand = new SqlCommand();
+                switch (Table)
+                {
+                    case "Owner":
+                        myCommand = new SqlCommand("DELETE FROM Owner WHERE OwnerID=@ID", Connection);
+                        break;
+                    case "CD":
+                        myCommand = new SqlCommand("DELETE FROM CD WHERE CDID=@ID", Connection);
+                        break;
+                    case "Track":
+                        myCommand = new SqlCommand("DELETE FROM CDTracks WHERE TrackID=@ID", Connection);
+                        break;
+                }
+                myCommand.Parameters.AddWithValue("ID", ID);
+                // use parameters to prevent SQL injections
+                Connection.Open();
+                //open connection add in the SQL
+                myCommand.ExecuteNonQuery();
+                Connection.Close();
+                return "Success";
+            }
+            else
+            {
+                Connection.Close();
+                return "Failed";
+            }
+        }
+
     }
 }

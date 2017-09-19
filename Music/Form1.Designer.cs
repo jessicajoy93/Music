@@ -297,6 +297,7 @@ namespace Music
             this.btnDeleteOwner.TabIndex = 16;
             this.btnDeleteOwner.Text = "Delete Owner";
             this.btnDeleteOwner.UseVisualStyleBackColor = true;
+            this.btnDeleteOwner.Click += new System.EventHandler(this.btnDeleteOwner_Click);
             // 
             // btnUpdateAll
             // 

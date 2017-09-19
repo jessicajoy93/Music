@@ -172,5 +172,10 @@ namespace Music
         {
             myDatabase.InsertOrUpdateOwner(string Firstname, string Lastname, string ID, string AddOrUpdate);
         }
+
+        private void btnDeleteOwner_Click(object sender, EventArgs e)
+        {
+            myDatabase.DeleteOwnerCDTracks(string ID, string Table);
+        }
     }
 }
