@@ -121,7 +121,7 @@ namespace Music
                     // Create a command object
                     // Create a Query
                     // Create and open a connection to SQL Server
-                    string query = "INSERT INTO Owner (FirstName, LastName) " + "VALUES(@Firstname, @Lastname";
+                    string query = "INSERT INTO Owner (FirstName, LastName) " + "VALUES(@Firstname, @Lastname)";
                     var myCommand = new SqlCommand(query, Connection);
                     // create params
                     myCommand.Parameters.AddWithValue("Firstname", Firstname);

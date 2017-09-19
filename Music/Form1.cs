@@ -170,12 +170,101 @@ namespace Music
 
         private void btnAddOwner_Click(object sender, EventArgs e)
         {
-            myDatabase.InsertOrUpdateOwner(string Firstname, string Lastname, string ID, string AddOrUpdate);
+            string result = null;
+            //hold the success or failure result
+            // only run if there is something in the textboxes
+            if ((txtFirstName.Text != string.Empty) && (txtLastName.Text != string.Empty))
+            {
+                try
+                {
+                    result = myDatabase.InsertOrUpdateOwner(txtFirstName.Text, txtLastName.Text, lblOwnerID.Text, "Add");
+                    MessageBox.Show(txtFirstName.Text + " " + txtLastName.Text + " Updating " + result);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                // update the datagrid view to see new entries
+                DisplayDataGridViewOwner();
+                txtFirstName.Text = "";
+                txtLastName.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Fill First Name and Last Name fields");
+            }
+
         }
 
         private void btnDeleteOwner_Click(object sender, EventArgs e)
         {
-            myDatabase.DeleteOwnerCDTracks(string ID, string Table);
+            string InputID = string.Empty;
+            // hold the ID of the Owner, CD, or Track
+            string result = null;
+            Button fakebutton = null;
+            fakebutton = (Button)sender;
+            try
+            {
+                switch (fakebutton.Name)
+                {
+                    case "btnDeleteOwner":
+                        InputID = lblOwnerID.Text;
+                        break;
+                    case "btnDeleteCD":
+                        InputID = lblCDID.Text;
+                        break;
+                    case "btnDeleteTracks":
+                        InputID = lblTrackID.Text;
+                        break;
+                }
+                //
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+        }
+
+        public bool IsTheTextBoxEmpty(Control root, string Tag)
+        {
+            foreach (Control ctrl in root.Controls)
+            {
+                if (ctrl is TextBox) //   If it is a textbox
+                {
+                    if ((string)(ctrl as TextBox).Tag == Tag) //and it has a tag equal to Tag
+                    {
+                        if (((TextBox)ctrl).Text == string.Empty)
+                        //and the textbox is  empty 
+                        {
+                            return true; //this should stop on the first empty textbox, which is what we want. 
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        private void btnUpdateAll_Click(object sender, EventArgs e)
+        {
+            // Update the Owner
+            //Only run if there is something in the textboxes
+            if (!IsTheTextBoxEmpty(this, "Owner"))
+            {
+                string result = null;
+                try
+                {
+                    result = myDatabase.InsertOrUpdateOwner(txtFirstName.Text, txtLastName.Text, lblOwnerID.Text, "Update");
+                    MessageBox.Show(txtFirstName.Text + " " + txtLastName.Text + " Updating " + result);
+                    // update the datagrid view to see new entries
+                    DisplayDataGridViewOwner();
+                    DGVOwner.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Owner not Updated " + ex.Message);
+                }
+            }
         }
     }
 }

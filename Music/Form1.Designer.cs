@@ -307,6 +307,7 @@ namespace Music
             this.btnUpdateAll.TabIndex = 15;
             this.btnUpdateAll.Text = "Update All";
             this.btnUpdateAll.UseVisualStyleBackColor = true;
+            this.btnUpdateAll.Click += new System.EventHandler(this.btnUpdateAll_Click);
             // 
             // btnClearAll
             // 
