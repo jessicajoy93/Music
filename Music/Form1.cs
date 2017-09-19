@@ -26,12 +26,6 @@ namespace Music
             DisplayDataGridViewOwner();
             // load the genres
             DisplayListBox();
-            // load the cd dgv
-            //DisplayDataGridViewCD();
-            // load the cd track dgv
-            //DisplayDataGridViewCDTrack();
-
-
         }
 
         // load the owner datagrid
@@ -50,37 +44,6 @@ namespace Music
             }
         }
 
-        // load the cd datagrid
-        private void DisplayDataGridViewCD()
-        {
-            // clear out old data
-            DGVCD.DataSource = null;
-            try
-            {
-                DGVCD.DataSource = myDatabase.FillDGVCDWithCD();
-                DGVCD.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        // load the cd tracks datagrid
-        private void DisplayDataGridViewCDTrack()
-        {
-            // clear out old data
-            DGVCD.DataSource = null;
-            try
-            {
-                DGVCDTracks.DataSource = myDatabase.FillDGVCDTrackWithCDTrack();
-                DGVCD.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
         private void DisplayListBox()
         {
@@ -118,7 +81,8 @@ namespace Music
                     //fill the next CD DGV with OwnerID
                     DGVCD.DataSource = myDatabase.FillDGVCDWithOwnerClick(myDatabase.OwnerID.ToString());
                     DGVCD.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-                    txtOwnerID.Text = myDatabase.OwnerID.ToString();
+                    //txtOwnerID.Text = myDatabase.OwnerID.ToString();
+                    lblOwnerID.Text = myDatabase.OwnerID.ToString();
                 }
             }
             catch (Exception ex)
@@ -132,7 +96,7 @@ namespace Music
         {
             try
             {
-
+                txtCDName.Text = txtCDName.Text.Trim();
                 txtCDName.Text = DGVCD.Rows[e.RowIndex].Cells[0].Value.ToString();
                 txtArtist.Text = DGVCD.Rows[e.RowIndex].Cells[1].Value.ToString();
                 txtCDGenre.Text = DGVCD.Rows[e.RowIndex].Cells[2].Value.ToString();
@@ -144,7 +108,8 @@ namespace Music
                     //fill the next CD DGV with OwnerID
                     DGVCDTracks.DataSource = myDatabase.FillDGVCDTracksWithCDClick(myDatabase.CDID.ToString());
                     DGVCDTracks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-                    txtCDID.Text = myDatabase.CDID.ToString();
+                    //txtCDID.Text = myDatabase.CDID.ToString();
+                    lblCDID.Text = myDatabase.CDID.ToString();
                 }
             }
             catch (Exception ex)
@@ -169,7 +134,8 @@ namespace Music
                     //fill the next CD DGV with OwnerID
                     //DGVCDTracks.DataSource = myDatabase.FillDGVCDTracksWithCDClick(myDatabase.CDID.ToString());
                     //DGVCDTracks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-                    txtTrackID.Text = myDatabase.TrackID.ToString();
+                    //txtTrackID.Text = myDatabase.TrackID.ToString();
+                    lblTrackID.Text = myDatabase.TrackID.ToString();
                 }
             }
             catch (Exception ex)
@@ -178,6 +144,33 @@ namespace Music
             }
         }
 
+        private void btnClearAll_Click(object sender, EventArgs e)
+        {
+            // clear all data from the textboxes
+            //Application.Restart();
 
+            //txtFirstName.Text = "";
+            //txtLastName.Text = "";
+            //txtCDName.Text = "";
+            //txtArtist.Text = "";
+            //txtCDGenre.Text = "";
+            //txtArtistName.Text = "";
+            //txtTrackDuration.Text = "";
+
+            //myDatabase.OwnerID = 0;
+            //myDatabase.CDID = 0;
+            //myDatabase.TrackID = 0;
+            //lblOwnerID.Text = "";
+            //lblCDID.Text = "";
+            //lblTrackID.Text = "";
+            Form1 newForm = new Form1();
+            newForm.Show();
+            this.Dispose(false);
+        }
+
+        private void btnAddOwner_Click(object sender, EventArgs e)
+        {
+            myDatabase.InsertOrUpdateOwner(string Firstname, string Lastname, string ID, string AddOrUpdate);
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Music
+﻿using System.Windows.Forms;
+
+namespace Music
 {
     partial class Form1
     {
@@ -37,8 +39,15 @@
             this.DGVCDTracks = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtCDID = new System.Windows.Forms.TextBox();
-            this.txtOwnerID = new System.Windows.Forms.TextBox();
+            this.lblTrackID = new System.Windows.Forms.Label();
+            this.lblCDID = new System.Windows.Forms.Label();
+            this.lblOwnerID = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnDeleteOwner = new System.Windows.Forms.Button();
             this.btnUpdateAll = new System.Windows.Forms.Button();
             this.btnClearAll = new System.Windows.Forms.Button();
@@ -52,15 +61,8 @@
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtTrackID = new System.Windows.Forms.TextBox();
             this.txtCDGenre = new System.Windows.Forms.TextBox();
             this.lbgenre = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVOwner)).BeginInit();
@@ -100,6 +102,9 @@
             // 
             // DGVOwner
             // 
+            this.DGVOwner.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.DGVOwner.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.DGVOwner.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DGVOwner.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVOwner.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGVOwner.Location = new System.Drawing.Point(3, 3);
@@ -114,18 +119,20 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(685, 285);
+            this.tabPage2.Size = new System.Drawing.Size(685, 185);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "CD";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // DGVCD
             // 
+            this.DGVCD.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.DGVCD.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.DGVCD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVCD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGVCD.Location = new System.Drawing.Point(3, 3);
             this.DGVCD.Name = "DGVCD";
-            this.DGVCD.Size = new System.Drawing.Size(679, 279);
+            this.DGVCD.Size = new System.Drawing.Size(679, 179);
             this.DGVCD.TabIndex = 0;
             this.DGVCD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVCD_CellContentClick);
             // 
@@ -134,18 +141,20 @@
             this.tabPage3.Controls.Add(this.DGVCDTracks);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(685, 285);
+            this.tabPage3.Size = new System.Drawing.Size(685, 185);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Tracks";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // DGVCDTracks
             // 
+            this.DGVCDTracks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.DGVCDTracks.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.DGVCDTracks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVCDTracks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGVCDTracks.Location = new System.Drawing.Point(0, 0);
             this.DGVCDTracks.Name = "DGVCDTracks";
-            this.DGVCDTracks.Size = new System.Drawing.Size(685, 285);
+            this.DGVCDTracks.Size = new System.Drawing.Size(685, 185);
             this.DGVCDTracks.TabIndex = 0;
             this.DGVCDTracks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVCDTracks_CellContentClick);
             // 
@@ -169,14 +178,15 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblTrackID);
+            this.panel1.Controls.Add(this.lblCDID);
+            this.panel1.Controls.Add(this.lblOwnerID);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtCDID);
-            this.panel1.Controls.Add(this.txtOwnerID);
             this.panel1.Controls.Add(this.btnDeleteOwner);
             this.panel1.Controls.Add(this.btnUpdateAll);
             this.panel1.Controls.Add(this.btnClearAll);
@@ -190,7 +200,6 @@
             this.panel1.Controls.Add(this.txtLastName);
             this.panel1.Controls.Add(this.txtFirstName);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txtTrackID);
             this.panel1.Controls.Add(this.txtCDGenre);
             this.panel1.Controls.Add(this.lbgenre);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -199,21 +208,86 @@
             this.panel1.Size = new System.Drawing.Size(693, 180);
             this.panel1.TabIndex = 1;
             // 
-            // txtCDID
+            // lblTrackID
             // 
-            this.txtCDID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCDID.Location = new System.Drawing.Point(581, 68);
-            this.txtCDID.Name = "txtCDID";
-            this.txtCDID.Size = new System.Drawing.Size(100, 23);
-            this.txtCDID.TabIndex = 18;
+            this.lblTrackID.BackColor = System.Drawing.Color.Snow;
+            this.lblTrackID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrackID.Location = new System.Drawing.Point(528, 139);
+            this.lblTrackID.Name = "lblTrackID";
+            this.lblTrackID.Size = new System.Drawing.Size(32, 23);
+            this.lblTrackID.TabIndex = 27;
             // 
-            // txtOwnerID
+            // lblCDID
             // 
-            this.txtOwnerID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOwnerID.Location = new System.Drawing.Point(581, 39);
-            this.txtOwnerID.Name = "txtOwnerID";
-            this.txtOwnerID.Size = new System.Drawing.Size(100, 23);
-            this.txtOwnerID.TabIndex = 17;
+            this.lblCDID.BackColor = System.Drawing.Color.Snow;
+            this.lblCDID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCDID.Location = new System.Drawing.Point(528, 87);
+            this.lblCDID.Name = "lblCDID";
+            this.lblCDID.Size = new System.Drawing.Size(32, 23);
+            this.lblCDID.TabIndex = 26;
+            // 
+            // lblOwnerID
+            // 
+            this.lblOwnerID.BackColor = System.Drawing.Color.Snow;
+            this.lblOwnerID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOwnerID.Location = new System.Drawing.Point(528, 41);
+            this.lblOwnerID.Name = "lblOwnerID";
+            this.lblOwnerID.Size = new System.Drawing.Size(32, 23);
+            this.lblOwnerID.TabIndex = 25;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(103, 25);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 13);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "First Name";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(209, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Last Name";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(313, 123);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 13);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Track Duration";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(103, 123);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Track Name";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(100, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "CD Name";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(313, 71);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Artist";
             // 
             // btnDeleteOwner
             // 
@@ -241,6 +315,7 @@
             this.btnClearAll.TabIndex = 14;
             this.btnClearAll.Text = "Clear All";
             this.btnClearAll.UseVisualStyleBackColor = true;
+            this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
             // 
             // btnAddTrack
             // 
@@ -268,6 +343,7 @@
             this.btnAddOwner.TabIndex = 11;
             this.btnAddOwner.Text = "Add Owner";
             this.btnAddOwner.UseVisualStyleBackColor = true;
+            this.btnAddOwner.Click += new System.EventHandler(this.btnAddOwner_Click);
             // 
             // txtTrackDuration
             // 
@@ -326,14 +402,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Genre";
             // 
-            // txtTrackID
-            // 
-            this.txtTrackID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTrackID.Location = new System.Drawing.Point(581, 97);
-            this.txtTrackID.Name = "txtTrackID";
-            this.txtTrackID.Size = new System.Drawing.Size(100, 23);
-            this.txtTrackID.TabIndex = 2;
-            // 
             // txtCDGenre
             // 
             this.txtCDGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -345,65 +413,11 @@
             // lbgenre
             // 
             this.lbgenre.FormattingEnabled = true;
-            this.lbgenre.Location = new System.Drawing.Point(566, 12);
+            this.lbgenre.Location = new System.Drawing.Point(569, 28);
             this.lbgenre.Name = "lbgenre";
             this.lbgenre.Size = new System.Drawing.Size(120, 134);
             this.lbgenre.TabIndex = 0;
             this.lbgenre.SelectedIndexChanged += new System.EventHandler(this.lbgenre_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(313, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Artist";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(100, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "CD Name";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(103, 123);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "Track Name";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(313, 123);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 13);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Track Duration";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(209, 25);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 13);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "Last Name";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(103, 25);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 13);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "First Name";
             // 
             // Form1
             // 
@@ -442,7 +456,6 @@
         private System.Windows.Forms.DataGridView DGVCD;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtTrackID;
         private System.Windows.Forms.TextBox txtCDGenre;
         private System.Windows.Forms.DataGridView DGVCDTracks;
         private System.Windows.Forms.Button btnDeleteOwner;
@@ -455,16 +468,17 @@
         private System.Windows.Forms.TextBox txtArtistName;
         private System.Windows.Forms.TextBox txtArtist;
         private System.Windows.Forms.TextBox txtCDName;
-        private System.Windows.Forms.TextBox txtLastName;
+        private TextBox txtLastName;
         private System.Windows.Forms.TextBox txtFirstName;
-        private System.Windows.Forms.TextBox txtOwnerID;
-        private System.Windows.Forms.TextBox txtCDID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblTrackID;
+        private System.Windows.Forms.Label lblCDID;
+        private System.Windows.Forms.Label lblOwnerID;
     }
 }
 

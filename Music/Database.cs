@@ -35,59 +35,24 @@ namespace Music
             DataTable dt = new DataTable();
             using (da = new SqlDataAdapter("select*from Owner", Connection))
             {
-                // connect in to the DB and get the SQL
-
-                // open a connection to the DB
-                Connection.Open();
-                // fill the datatable from the SQL
-                da.Fill(dt);
-                // close the connection
-                Connection.Close();
-
+                SqlConnection(dt);
             }
             // pass the datatable data to the DataGridView;
             return dt;
         }
 
-        public DataTable FillDGVCDWithCD()
+        private void SqlConnection(DataTable dt)
         {
-            // create a datatable as we only have one table, the Owner
-            DataTable dt = new DataTable();
-            using (da = new SqlDataAdapter("select*from CD", Connection))
-            {
-                // connect in to the DB and get the SQL
+            // connect in to the DB and get the SQL
 
-                // open a connection to the DB
-                Connection.Open();
-                // fill the datatable from the SQL
-                da.Fill(dt);
-                // close the connection
-                Connection.Close();
-
-            }
-            // pass the datatable data to the DataGridView;
-            return dt;
+            // open a connection to the DB
+            Connection.Open();
+            // fill the datatable from the SQL
+            da.Fill(dt);
+            // close the connection
+            Connection.Close();
         }
 
-        public DataTable FillDGVCDTrackWithCDTrack()
-        {
-            // create a datatable as we only have one table, the Owner
-            DataTable dt = new DataTable();
-            using (da = new SqlDataAdapter("select*from CDTracks", Connection))
-            {
-                // connect in to the DB and get the SQL
-
-                // open a connection to the DB
-                Connection.Open();
-                // fill the datatable from the SQL
-                da.Fill(dt);
-                // close the connection
-                Connection.Close();
-
-            }
-            // pass the datatable data to the DataGridView;
-            return dt;
-        }
 
         public List<string> FillListBoxWithGenre()
         {
@@ -124,12 +89,7 @@ namespace Music
                 DataTable dt = new DataTable();
                 // create a datatable as we only have one table, owner
 
-                Connection.Open();
-                //open a connection to the DB
-                da.Fill(dt);
-                // fill the datatable from the SQL
-                Connection.Close();
-                //close the connection
+                SqlConnection(dt);
 
                 return dt;
             }
@@ -145,15 +105,54 @@ namespace Music
                 DataTable dt = new DataTable();
                 // create a datatable as we only have one table, owner
 
-                Connection.Open();
-                //open a connection to the DB
-                da.Fill(dt);
-                // fill the datatable from the SQL
-                Connection.Close();
-                //close the connection
+                SqlConnection(dt);
 
                 return dt;
             }
         }
+
+        public string InsertOrUpdateOwner(string Firstname, string Lastname, string ID, string AddOrUpdate)
+        {
+            try
+            {
+                // Add gets passed through the parameter
+                if (AddOrUpdate == "Add")
+                {
+                    // Create a command object
+                    // Create a Query
+                    // Create and open a connection to SQL Server
+                    string query = "INSERT INTO Owner (FirstName, LastName) " + "VALUES(@Firstname, @Lastname";
+                    var myCommand = new SqlCommand(query, Connection);
+                    // create params
+                    myCommand.Parameters.AddWithValue("Firstname", Firstname);
+                    myCommand.Parameters.AddWithValue("Lastname", Lastname);
+                    Connection.Open();
+                    //open connection add in the SQL
+                    myCommand.ExecuteNonQuery();
+                    Connection.Close();
+                }
+                //Update gets passed through the parameter
+                else if (AddOrUpdate == "Update")
+                {
+                    var myCommand = new SqlCommand("UPDATE Owner set FirstName=@Firstname, LastName=@Lastname where OwnerID=@ID", Connection);
+                    //use parameters to prevent SQl injections
+                    myCommand.Parameters.AddWithValue("Firstname", Firstname);
+                    myCommand.Parameters.AddWithValue("Lastname", Lastname);
+                    myCommand.Parameters.AddWithValue("ID", ID);
+                    Connection.Open();
+                    //open connection add in the SQL
+                    myCommand.ExecuteNonQuery();
+                    Connection.Close();
+                }
+                return " is Successful";
+            }
+            catch (Exception ex)
+            {
+                // need to get it to close a second time as it jumps the first connection. Close if ExecuteNonQuery fails.
+                Connection.Close();
+                return " has Failed with " + ex;
+            }
+        }
+
     }
 }
