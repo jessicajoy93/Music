@@ -63,6 +63,8 @@ namespace Music
             this.label1 = new System.Windows.Forms.Label();
             this.txtCDGenre = new System.Windows.Forms.TextBox();
             this.lbgenre = new System.Windows.Forms.ListBox();
+            this.btnDeleteCD = new System.Windows.Forms.Button();
+            this.btnDeleteTrack = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVOwner)).BeginInit();
@@ -178,6 +180,8 @@ namespace Music
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDeleteTrack);
+            this.panel1.Controls.Add(this.btnDeleteCD);
             this.panel1.Controls.Add(this.lblTrackID);
             this.panel1.Controls.Add(this.lblCDID);
             this.panel1.Controls.Add(this.lblOwnerID);
@@ -295,6 +299,7 @@ namespace Music
             this.btnDeleteOwner.Name = "btnDeleteOwner";
             this.btnDeleteOwner.Size = new System.Drawing.Size(93, 23);
             this.btnDeleteOwner.TabIndex = 16;
+            this.btnDeleteOwner.Tag = "Owner";
             this.btnDeleteOwner.Text = "Delete Owner";
             this.btnDeleteOwner.UseVisualStyleBackColor = true;
             this.btnDeleteOwner.Click += new System.EventHandler(this.btnDeleteOwner_Click);
@@ -421,6 +426,26 @@ namespace Music
             this.lbgenre.TabIndex = 0;
             this.lbgenre.SelectedIndexChanged += new System.EventHandler(this.lbgenre_SelectedIndexChanged);
             // 
+            // btnDeleteCD
+            // 
+            this.btnDeleteCD.Location = new System.Drawing.Point(422, 12);
+            this.btnDeleteCD.Name = "btnDeleteCD";
+            this.btnDeleteCD.Size = new System.Drawing.Size(93, 23);
+            this.btnDeleteCD.TabIndex = 28;
+            this.btnDeleteCD.Tag = "CD";
+            this.btnDeleteCD.Text = "Delete CD";
+            this.btnDeleteCD.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteTrack
+            // 
+            this.btnDeleteTrack.Location = new System.Drawing.Point(422, 136);
+            this.btnDeleteTrack.Name = "btnDeleteTrack";
+            this.btnDeleteTrack.Size = new System.Drawing.Size(93, 23);
+            this.btnDeleteTrack.TabIndex = 29;
+            this.btnDeleteTrack.Tag = "Track";
+            this.btnDeleteTrack.Text = "Delete Track";
+            this.btnDeleteTrack.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -481,6 +506,8 @@ namespace Music
         private System.Windows.Forms.Label lblTrackID;
         private System.Windows.Forms.Label lblCDID;
         private System.Windows.Forms.Label lblOwnerID;
+        private Button btnDeleteTrack;
+        private Button btnDeleteCD;
     }
 }
 

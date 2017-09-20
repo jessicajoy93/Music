@@ -163,9 +163,21 @@ namespace Music
             //lblOwnerID.Text = "";
             //lblCDID.Text = "";
             //lblTrackID.Text = "";
+            ClearAllTextBoxes(this);
             Form1 newForm = new Form1();
             newForm.Show();
             this.Dispose(false);
+        }
+
+        public void ClearAllTextBoxes(Control root)
+        {
+            foreach (Control ctrl in root.Controls)
+            {
+                if (ctrl is TextBox)
+                {
+                    ((TextBox)ctrl).Text = string.Empty;
+                }
+            }
         }
 
         private void btnAddOwner_Click(object sender, EventArgs e)
@@ -217,12 +229,20 @@ namespace Music
                         InputID = lblTrackID.Text;
                         break;
                 }
-                //
+                //delete the track here and return back sucess or failure
+                result = myDatabase.DeleteOwnerCDTracks(InputID, fakebutton.Tag.ToString());
+                MessageBox.Show(fakebutton.Tag + " delete " + result);
+
+                //refresh everything
+                DisplayDataGridViewOwner();
+                DGVCD.DataSource = myDatabase.FillDGVCDWithOwnerClick(lblCDID.Text);
+                DGVCDTracks.DataSource = myDatabase.FillDGVCDTracksWithCDClick(lblTrackID.Text);
+
+                ClearAllTextBoxes(this); //clear all the textboxes afterwards
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                Console.WriteLine(exception);
-                throw;
+                MessageBox.Show("First click on the Owner, CD, or Track you want to delte " + ex.Message);
             }
         }
 
